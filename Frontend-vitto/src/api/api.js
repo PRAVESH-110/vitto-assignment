@@ -30,7 +30,7 @@ export const getApplication = async (id) => {
 
 export async function warmUpBackend() {
   try {
-    let apiUrl = import.meta.env.VITE_API_URL || 'https://gurukul-04ad.onrender.com/api'; // Fallback to production URL
+    let apiUrl = import.meta.env.VITE_API_URL || 'https://vitto-assignment-c7a8.onrender.com'; // Fallback to production URL
 
     // Remove trailing slash if present
     if (apiUrl.endsWith('/')) {
