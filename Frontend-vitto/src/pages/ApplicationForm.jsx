@@ -53,7 +53,7 @@ const ApplicationForm = () => {
       };
 
       const res = await createApplication(payload);
-      
+
       if (res.success && res.data) {
         // Navigate to the result page, passing the decision result in state
         navigate(`/result/${res.data.applicationId}`, { state: { result: res.data } });
@@ -68,16 +68,13 @@ const ApplicationForm = () => {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50 via-white to-slate-50 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
         className="glass-card w-full max-w-2xl p-8 md:p-10"
       >
         <div className="mb-8 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-600 shadow-lg shadow-indigo-600/30 mb-6">
-            <Building2 className="h-8 w-8 text-white" />
-          </div>
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-2">
             MSME Lending Application
           </h2>
@@ -130,7 +127,7 @@ const ApplicationForm = () => {
                   required
                 />
               </div>
-              
+
               <div className="relative">
                 <InputField
                   label="Requested Loan Amount (₹)"
@@ -154,7 +151,7 @@ const ApplicationForm = () => {
                 required
               />
             </div>
-            
+
             <InputField
               label="Loan Purpose"
               id="loanPurpose"

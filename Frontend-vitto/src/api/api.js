@@ -27,3 +27,27 @@ export const getApplication = async (id) => {
     throw new Error('An unexpected error occurred');
   }
 };
+
+export async function warmUpBackend() {
+  try {
+    let apiUrl = import.meta.env.VITE_API_URL || 'https://gurukul-04ad.onrender.com/api'; // Fallback to production URL
+
+    // Remove trailing slash if present
+    if (apiUrl.endsWith('/')) {
+        apiUrl = apiUrl.slice(0, -1);
+    }
+
+    // Construct base URL by removing '/api' suffix if present to hit root /health
+    const baseUrl = apiUrl.endsWith('/api') ? apiUrl.slice(0, -4) : apiUrl;
+
+    console.log(`Warming up backend at ${baseUrl}/api/health...`);
+
+    await axios.get(
+        baseUrl + "/api/health",
+        { timeout: 8000 } // Short timeout to not block too long
+    );
+    console.log("Backend warm-up successful");
+  } catch (e) {
+    console.warn("Backend warm-up failed (non-fatal):", e.message);
+  }
+}
