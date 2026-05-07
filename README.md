@@ -145,15 +145,7 @@ The core logic resides in `src/services/decisionEngine.js`.
 - Implement webhooks or a polling endpoint for asynchronous processing if the decision engine becomes computationally heavy.
 - Add user authentication (JWT) for business owners and bank admins.
 
----
-
-## Deployment Instructions
-
-1. **Database**: Provision a MongoDB cluster on MongoDB Atlas.
-2. **Backend**: 
-   - Deploy to Heroku, Render, or AWS Elastic Beanstalk.
-   - Set environment variables (`NODE_ENV=production`, `MONGODB_URI=...`, `PORT=...`).
-3. **Frontend**:
-   - Build using `npm run build`.
-   - Deploy the `dist` folder to Vercel, Netlify, or AWS S3.
-   - Ensure the `VITE_API_URL` environment variable points to your production backend URL during the build.
+## Tradeoffs 
+I've used MongoDB as the sole Database because 
+1) Its the only database I'm comfortable working with, given the time constraint 
+2) I didn't feel the need to use Postgres given the conditions and the requirements of the project at the current scale
