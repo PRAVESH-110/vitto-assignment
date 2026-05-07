@@ -15,7 +15,7 @@ app.use(helmet());
 
 // Configure CORS
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || '*', // Restrict to frontend URL in production
+  origin: process.env.FRONTEND_URL, // Restrict to frontend URL in production
   methods: 'GET,POST,PUT,DELETE',
   credentials: true,
 };
