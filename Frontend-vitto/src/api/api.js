@@ -34,7 +34,7 @@ export async function warmUpBackend() {
 
     // Remove trailing slash if present
     if (apiUrl.endsWith('/')) {
-        apiUrl = apiUrl.slice(0, -1);
+      apiUrl = apiUrl.slice(0, -1);
     }
 
     // Construct base URL by removing '/api' suffix if present to hit root /health
@@ -43,8 +43,8 @@ export async function warmUpBackend() {
     console.log(`Warming up backend at ${baseUrl}/api/health...`);
 
     await axios.get(
-        baseUrl + "/api/health",
-        { timeout: 8000 } // Short timeout to not block too long
+      baseUrl + "/api/health",
+      { timeout: 8000 } // Short timeout to not block too long
     );
     console.log("Backend warm-up successful");
   } catch (e) {

@@ -12,7 +12,14 @@ const app = express();
 
 // Security Middleware
 app.use(helmet());
-app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Restrict to frontend URL in production
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Rate Limiting
 const apiLimiter = rateLimit({
@@ -30,6 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.get('/', (req, res) => res.status(200).send('API is running.'));
 app.use('/api/health', healthRoutes);
 app.use('/api/applications', applicationRoutes);
 
