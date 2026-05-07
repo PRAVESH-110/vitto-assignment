@@ -144,8 +144,7 @@ The core logic resides in `src/services/decisionEngine.js`.
 - Integrate third-party API hooks (e.g., CIBIL/Experian) to augment the base score.
 - Implement webhooks or a polling endpoint for asynchronous processing if the decision engine becomes computationally heavy.
 - Add user authentication (JWT) for business owners and bank admins.
+- Introduce lender-side manual review queues for borderline applications (e.g. scores between 580–650) instead of hard auto-rejection.
 
 ## Tradeoffs 
-I've used MongoDB as the sole Database because 
-1) Its the only database I'm comfortable working with, given the time constraint 
-2) I didn't feel the need to use Postgres given the conditions and the requirements of the project at the current scale
+I chose MongoDB-only architecture to optimize development speed, reduce infrastructure complexity, and focus more on product logic, validation, and system design quality. The application’s document-oriented workflows (applications, decisions, audit logs) map naturally to MongoDB, while the modular MVC architecture keeps the system scalable and migration-friendly for future relational adoption if needed.
